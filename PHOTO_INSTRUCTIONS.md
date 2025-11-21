@@ -11,7 +11,7 @@
 **Option A (Recommended):**
 Replace the placeholder file at:
 ```
-/Users/abhi/Desktop/test_anti/frontend/public/profile.jpg
+/Users/abhi/Desktop/test_anti/frontend/public/profile.jpeg
 ```
 
 **Option B:**

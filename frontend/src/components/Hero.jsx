@@ -10,7 +10,7 @@ const Hero = ({ data }) => {
         const img = new Image();
         img.onload = () => setHasPhoto(true);
         img.onerror = () => setHasPhoto(false);
-        img.src = '/profile.jpg';
+        img.src = '/profile.jpeg';
     }, []);
 
     if (!data) return null;
@@ -144,7 +144,7 @@ const Hero = ({ data }) => {
                         <div className="relative w-full h-full rounded-full glass-card flex items-center justify-center overflow-hidden border-4 border-white/50 dark:border-slate-700/50">
                             {hasPhoto ? (
                                 <img
-                                    src="/profile.jpg"
+                                    src="/profile.jpeg"
                                     alt={data.name}
                                     className="w-full h-full object-cover"
                                 />
