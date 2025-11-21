@@ -2,11 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, Github, Linkedin, Mail, Sparkles, Brain, Code2 } from 'lucide-react';
 
+/**
+ * Hero Component - Landing section of the portfolio
+ * Features: Profile photo/initials, name, title, AI skills, social links, resume download
+ */
 const Hero = ({ data }) => {
+    // Check if profile photo exists
     const [hasPhoto, setHasPhoto] = useState(false);
 
     useEffect(() => {
-        // Check if profile photo exists
+        // Try loading profile photo, fallback to initials if not found
         const img = new Image();
         img.onload = () => setHasPhoto(true);
         img.onerror = () => setHasPhoto(false);
