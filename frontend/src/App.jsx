@@ -1,0 +1,71 @@
+import React, { useEffect, useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import ExperienceList from './components/ExperienceList';
+import Projects from './components/Projects';
+import SkillsGrid from './components/SkillsGrid';
+import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
+
+function App() {
+  const [resumeData, setResumeData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/resume`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch resume data');
+        }
+        const data = await response.json();
+        setResumeData(data);
+      } catch (err) {
+        console.error(err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 text-red-500">
+        Error: {error}. Please ensure the backend is running.
+      </div>
+    );
+  }
+
+  return (
+    <ThemeProvider>
+      <div className="bg-white dark:bg-slate-900 min-h-screen transition-colors duration-300">
+        <Navbar />
+        <main>
+          <Hero data={resumeData} />
+          <About data={resumeData} />
+          <ExperienceList data={resumeData} />
+          <Projects data={resumeData} />
+          <SkillsGrid data={resumeData} />
+          <ContactForm />
+        </main>
+        <Footer data={resumeData} />
+      </div>
+    </ThemeProvider>
+  );
+}
+
+export default App;
