@@ -49,12 +49,17 @@ const ContactForm = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-4">
-                        Get In Touch
-                    </h2>
-                    <p className="text-center text-slate-600 dark:text-slate-400 mb-12">
-                        Have a question or want to work together? Drop me a message!
-                    </p>
+                    <div className="flex justify-center mb-12">
+                        <a
+                            href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=abhijit79"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-col justify-center items-center px-7 py-2 text-center no-underline text-white w-52 h-8 rounded-2xl bg-[#0A66C2] hover:bg-[#084d94] transition-colors shadow-lg hover:shadow-xl"
+                            style={{ fontFamily: '"SF Pro Text", Helvetica, sans-serif' }}
+                        >
+                            Follow on LinkedIn
+                        </a>
+                    </div>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -105,8 +110,8 @@ const ContactForm = () => {
                                 type="submit"
                                 disabled={status === 'submitting'}
                                 className={`flex items-center px-8 py-3 rounded-full font-medium text-white transition-all shadow-lg ${status === 'submitting'
-                                        ? 'bg-slate-400 cursor-not-allowed'
-                                        : 'bg-accent hover:bg-sky-500 hover:shadow-accent/50'
+                                    ? 'bg-slate-400 cursor-not-allowed'
+                                    : 'bg-accent hover:bg-sky-500 hover:shadow-accent/50'
                                     }`}
                             >
                                 {status === 'submitting' ? (
